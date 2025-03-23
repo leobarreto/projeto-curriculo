@@ -13,10 +13,16 @@ class CurriculoController extends Controller
         return view('curriculos.create');
     }
 
+    public function edit(Curriculo $curriculo)
+    {
+        return view('curriculos.create', [
+            'curriculo' => $curriculo
+        ]);
+    }
+
     public function store(CurriculoRequest $request)
     {
         $data = $request->validated();
-        $data['data_nascimento'] = \Carbon\Carbon::createFromFormat('d/m/Y', $data['data_nascimento'])->format('Y-m-d');
         $data['user_id'] = Auth::id();
 
         Curriculo::create($data);
@@ -30,5 +36,19 @@ class CurriculoController extends Controller
         $media_salarial = Curriculo::avg('pretensao_salarial');
 
         return view('curriculos.index', compact('curriculos', 'media_salarial'));
+    }
+
+    public function update(CurriculoRequest $request, Curriculo $curriculo)
+    {
+        $curriculo->update($request->validated()); // O mutator cuidará da conversão
+        return redirect()->route('curriculos.index')->with('success', 'Currículo atualizado!');
+    }
+
+    // CurriculoController.php
+    public function destroy(Curriculo $curriculo)
+    {
+        $curriculo->delete();
+        return redirect()->route('curriculos.index')
+            ->with('success', 'Currículo excluído com sucesso!');
     }
 }

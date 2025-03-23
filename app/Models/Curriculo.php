@@ -11,6 +11,8 @@ class Curriculo extends Model
 
     // Definindo os campos que podem ser preenchidos via mass assignment
     protected $fillable = [
+        'nome',
+        'email',
         'user_id',
         'cpf',
         'data_nascimento',
@@ -26,5 +28,17 @@ class Curriculo extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected $dates = ['data_nascimento'];
+
+    public function getDataNascimentoAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y');
+    }
+
+    public function setDataNascimentoAttribute($value)
+    {
+        $this->attributes['data_nascimento'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
 }
