@@ -27,4 +27,16 @@ class Curriculo extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $dates = ['data_nascimento'];
+
+    public function getDataNascimentoAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y');
+    }
+
+    public function setDataNascimentoAttribute($value)
+    {
+        $this->attributes['data_nascimento'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 // use Illuminate\Container\Attributes\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class CurriculoRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class CurriculoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cpf' => 'required|string|size:14|unique:curriculos',
+            Rule::unique('curriculos')->ignore($this->route('curriculo')),
             'data_nascimento' => 'required|date_format:d/m/Y',
             'sexo' => 'required',
             'estado_civil' => 'required',

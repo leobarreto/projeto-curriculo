@@ -11,6 +11,15 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <form
                     action="{{ isset($curriculo) ? route('curriculos.update', $curriculo->id) : route('curriculos.store') }}"
@@ -31,7 +40,7 @@
                     <div class="mb-3">
                         <label for="data_nascimento" class="form-label">Data de Nascimento</label>
                         <input type="text" name="data_nascimento" id="data_nascimento"
-                            class="form-control form-control-sm" placeholder="dd/mm/yyyy"
+                            class="form-control form-control-sm date-mask" placeholder="dd/mm/yyyy"
                             value="{{ old('data_nascimento', $curriculo->data_nascimento ?? '') }}" required>
                     </div>
                     <div class="mb-3">
