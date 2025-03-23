@@ -19,7 +19,6 @@ return new class extends Migration
             $table->enum('sexo', ['Masculino', 'Feminino', 'Outro']); // Enum para sexo
             $table->string('estado_civil'); // Estado civil
             $table->string('escolaridade'); // Nível de escolaridade
-            $table->text('cursos_especializacoes')->nullable(); // Cursos e especializações (pode ser nulo)
             $table->text('experiencia_profissional')->nullable(); // Experiência profissional
             $table->decimal('pretensao_salarial', 10, 2); // Pretensão salarial com 2 casas decimais
             $table->timestamps(); // Campos created_at e updated_at

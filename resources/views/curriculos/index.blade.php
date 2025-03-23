@@ -22,7 +22,7 @@
                     <td>{{ number_format($curriculo->pretensao_salarial, 2, ',', '.') }}</td>
                     <td>
                         <!-- Link para editar o currículo -->
-                        <a href="{{ route('curriculos.create', $curriculo->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{{ route('curriculos.edit', $curriculo->id) }}" class="btn btn-warning btn-sm">Editar</a>
 
                         <!-- Formulário para excluir o currículo -->
                         {{-- <form action="{{ route('curriculos.destroy', $curriculo->id) }}" method="POST"

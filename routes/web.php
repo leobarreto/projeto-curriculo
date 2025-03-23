@@ -25,7 +25,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/curriculos', [CurriculoController::class, 'index'])->name('curriculos.index');
     Route::get('/curriculos/create', [CurriculoController::class, 'create'])->name('curriculos.create');
     Route::post('/curriculos', [CurriculoController::class, 'store'])->name('curriculos.store');
-    Route::put('/curriculos/{id}', [CurriculoController::class, 'update'])->name('curriculos.update');
+    Route::get('/curriculos/{curriculo}/edit', [CurriculoController::class, 'edit'])->name('curriculos.edit'); // Nova rota
+    Route::put('/curriculos/{curriculo}', [CurriculoController::class, 'update'])->name('curriculos.update');
 });
 
 Route::get('/teste-auth', function () {

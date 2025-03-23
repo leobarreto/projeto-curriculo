@@ -22,6 +22,8 @@ function validarCPF(cpf) {
 
 // Aplica máscara e validação a todos os campos com a classe "cpf-mask"
 $(document).ready(function() {
+    $('.date-mask').mask('00/00/0000');
+
     // Aplica a máscara
     $('.cpf-mask').mask('000.000.000-00');
 
