@@ -26,10 +26,19 @@ class CurriculoRequest extends FormRequest
     {
         return [
             Rule::unique('curriculos')->ignore($this->route('curriculo')),
+            'nome' => 'required',
+            'email' => 'required|email',
+            'cpf' => [
+                'required',
+                'cpf', 
+                Rule::unique('curriculos')->ignore($this->route('curriculo')),
+            ],
             'data_nascimento' => 'required|date_format:d/m/Y',
             'sexo' => 'required',
             'estado_civil' => 'required',
             'escolaridade' => 'required',
+            'cursos_especializacoes' => 'required',
+            'experiencia_profissional' => 'required',
             'pretensao_salarial' => 'required|numeric',
         ];
     }

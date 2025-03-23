@@ -11,6 +11,8 @@ class Curriculo extends Model
 
     // Definindo os campos que podem ser preenchidos via mass assignment
     protected $fillable = [
+        'nome',
+        'email',
         'user_id',
         'cpf',
         'data_nascimento',

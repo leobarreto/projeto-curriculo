@@ -30,6 +30,18 @@
                     @endif
 
                     <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" name="nome" id="nome" class="form-control form-control-sm"
+                            placeholder="Digite o Nome do Candidato" value="{{ old('nome', $curriculo->nome ?? '') }}"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="text" name="email" id="email" class="form-control form-control-sm"
+                            placeholder="Digite o e-mail do Candidato" value="{{ old('email', $curriculo->email ?? '') }}"
+                            required>
+                    </div>
+                    <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask"
                             placeholder="Digite seu CPF" value="{{ old('cpf', $curriculo->cpf ?? '') }}" required>
@@ -70,18 +82,24 @@
                             value="{{ old('escolaridade', $curriculo->escolaridade ?? '') }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="experiencia_profissional" class="form-label">Experiência Profissional</label>
-                        <textarea name="experiencia_profissional" id="experiencia_profissional" class="form-control form-control-sm"
-                            placeholder="Descreva sua experiência profissional" rows="4">{{ old('experiencia_profissional', $curriculo->experiencia_profissional ?? '') }}</textarea>
+                        <label for="cursos_especializacoes" class="form-label">Cursos e Especializações</label>
+                        <textarea name="cursos_especializacoes" id="cursos_especializacoes" class="form-control form-control-sm"
+                            placeholder="Descreva sua experiência profissional" rows="4">{{ old('cursos_especializacoes', $curriculo->cursos_especializacoes ?? '') }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="pretensao_salarial" class="form-label">Pretensão Salarial</label>
-                        <input type="number" name="pretensao_salarial" id="pretensao_salarial"
-                            class="form-control form-control-sm" placeholder="Digite sua pretensão salarial"
-                            value="{{ old('pretensao_salarial', $curriculo->pretensao_salarial ?? '') }}" required>
-                    </div>
-                    <button type="submit"
-                        class="btn btn-success w-100">{{ isset($curriculo) ? 'Atualizar' : 'Salvar' }}</button>
+                        <div class="mb-3">
+                            <label for="experiencia_profissional" class="form-label">Experiência Profissional</label>
+                            <textarea name="experiencia_profissional" id="experiencia_profissional" class="form-control form-control-sm"
+                                placeholder="Descreva sua experiência profissional" rows="4">{{ old('experiencia_profissional', $curriculo->experiencia_profissional ?? '') }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pretensao_salarial" class="form-label">Pretensão Salarial</label>
+                            <input type="number" name="pretensao_salarial" id="pretensao_salarial"
+                                class="form-control form-control-sm" placeholder="Digite sua pretensão salarial"
+                                value="{{ old('pretensao_salarial', $curriculo->pretensao_salarial ?? '') }}" required>
+                        </div>
+                        <button type="submit"
+                            class="btn btn-success w-100">{{ isset($curriculo) ? 'Atualizar' : 'Salvar' }}</button>
                 </form>
             </div>
         </div>

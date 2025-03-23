@@ -43,4 +43,12 @@ class CurriculoController extends Controller
         $curriculo->update($request->validated()); // O mutator cuidará da conversão
         return redirect()->route('curriculos.index')->with('success', 'Currículo atualizado!');
     }
+
+    // CurriculoController.php
+    public function destroy(Curriculo $curriculo)
+    {
+        $curriculo->delete();
+        return redirect()->route('curriculos.index')
+            ->with('success', 'Currículo excluído com sucesso!');
+    }
 }
